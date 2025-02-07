@@ -39,10 +39,11 @@ public class NewPlayer : PhysicsObject
 
     [Header("Properties")]
     [SerializeField] private bool alwaysRunRight = false;
-    [SerializeField] private float runRightSpeed = 2;
+    [SerializeField] public float runRightSpeed = 2;
     [SerializeField] private string[] cheatItems;
     public bool dead = false;
     public bool frozen = false;
+    public bool super_armor = false;
     private float fallForgivenessCounter; //Counts how long the player has fallen off a ledge
     [SerializeField] private float fallForgiveness = .2f; //How long the player can fall from a ledge and still jump
     [System.NonSerialized] public string groundType = "grass";
@@ -488,6 +489,24 @@ public class NewPlayer : PhysicsObject
         for (int i = 0; i < cheatItems.Length; i++)
         {
             GameManager.Instance.GetInventoryItem(cheatItems[i], null);
+        }
+    }
+
+    public void StopEffect(Collectable.ItemType itemType, float time)
+    {
+        StartCoroutine(StopEffectCoroutine(itemType, time));
+    }
+
+    private IEnumerator StopEffectCoroutine(Collectable.ItemType itemType, float time)
+    {
+        yield return new WaitForSeconds(time);
+        if (itemType == Collectable.ItemType.boxing)
+        {
+            super_armor = false;
+        }
+        else if (itemType == Collectable.ItemType.FPGA)
+        {
+            runRightSpeed = 1;
         }
     }
 }
