@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 /*Manages and updates the HUD, which contains your health bar, coins, etc*/
 
@@ -26,6 +27,7 @@ public class HUD : MonoBehaviour
     private float healthBarWidthEased;
     [System.NonSerialized] public string loadSceneName;
     [System.NonSerialized] public bool resetPlayer;
+    [SerializeField] public Text Times;
 
     void Start()
     {
@@ -65,6 +67,12 @@ public class HUD : MonoBehaviour
             ammoBar.transform.localScale = new Vector2(ammoBarWidthEased, transform.localScale.y);
         }
         
+        Times.text = FormatTime(NewPlayer.Instance.currentTime);
+        if(!NewPlayer.Instance.frozen && NewPlayer.Instance.firstLanded && !NewPlayer.Instance.stopTime)
+        {
+            NewPlayer.Instance.currentTime -= Time.deltaTime;
+        }
+        
     }
 
     public void HealthBarHurt()
@@ -75,6 +83,19 @@ public class HUD : MonoBehaviour
     public void SetInventoryImage(Sprite image)
     {
         inventoryItemGraphic.sprite = image;
+    }
+
+    public string FormatTime(float seconds)
+    {
+        if(NewPlayer.Instance.currentTime >= 0)
+        {
+            int minutes = Mathf.FloorToInt(seconds / 60);
+            int secs = Mathf.FloorToInt(seconds % 60);
+            int minsecs = Mathf.FloorToInt((seconds - minutes * 60 - secs) * 100); 
+            // 返回格式化的时间字符串
+            return string.Format("{0:D2}:{1:D2}.{2:D2}", minutes, secs, minsecs);
+        }
+        return "00:00.00";
     }
 
     void ResetScene()

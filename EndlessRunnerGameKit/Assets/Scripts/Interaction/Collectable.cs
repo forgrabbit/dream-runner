@@ -149,11 +149,13 @@ public class Collectable : MonoBehaviour
         //If my parent has an Ejector script, it means that my parent is actually what needs to be destroyed, along with me, once collected
         if (transform.parent.GetComponent<Ejector>() != null)
         {
-            Destroy(transform.parent.gameObject);
+            //Destroy(transform.parent.gameObject);
+            transform.parent.gameObject.SetActive(false);
         }
         else
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            transform.gameObject.SetActive(false);
         }
 
     }
