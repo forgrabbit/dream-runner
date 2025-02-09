@@ -10,7 +10,7 @@ public class Breakable : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Sprite brokenSprite; //If destroyAfterDeath is false, a broken sprite will appear instead
-    [SerializeField] private GameObject deathParticles;
+    [SerializeField] public GameObject deathParticles;
     [SerializeField] private bool destroyAfterDeath = true; //If false, a broken sprite will appear instead of complete destruction
     public int health;
     [SerializeField] private Instantiator instantiator;
@@ -52,6 +52,7 @@ public class Breakable : MonoBehaviour
                 {
                     Die();
                 }
+                
             }
         }
     }
@@ -78,11 +79,13 @@ public class Breakable : MonoBehaviour
         //Destroy me, or set my sprite to the brokenSprite
         if (destroyAfterDeath)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            transform.parent.gameObject.SetActive(false);
         }
         else
         {
             spriteRenderer.sprite = brokenSprite;
         }
+
     }
 }

@@ -7,6 +7,7 @@ public class Infinite : MonoBehaviour
 {
     GameObject mainCam;
     int[] width = {165, 160, 185};
+    [SerializeField] GameObject deathParticles;
     private void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -44,18 +45,60 @@ public class Infinite : MonoBehaviour
                 {
                     randomNumber = Random.Range(1, 4);
                 }
-                Debug.Log(randomNumber);
+                //Debug.Log(randomNumber);
                 if(randomNumber == 1)
                 {
-                    Plane1.x = floor_position.x + width[current - 1];   
+                    Plane1.x = floor_position.x + width[current - 1];
+
+                    foreach (Transform child in GameObject.Find("Plane1").transform)
+                    {
+                        child.gameObject.SetActive(true);
+                        if(child.gameObject.name.Equals("BreakableWall"))
+                        {
+                            GameObject newObject = Instantiate(deathParticles, child.gameObject.transform);
+                            newObject.transform.position = GetChildPositionByName(child, "Graphic");
+                            child.GetComponentInChildren<Breakable>().deathParticles = newObject;
+                            child.GetComponentInChildren<Breakable>().health = 1;
+                            newObject.SetActive(false);
+                        }
+                    }   
+
                 }
                 else if(randomNumber == 2)
                 {
-                    Plane2.x = floor_position.x + width[current - 1];  
+                    Plane2.x = floor_position.x + width[current - 1];
+
+                    foreach (Transform child in GameObject.Find("Plane2").transform)
+                    {
+                        child.gameObject.SetActive(true);
+                        if(child.gameObject.name.Equals("BreakableWall"))
+                        {
+                            GameObject newObject = Instantiate(deathParticles, child.gameObject.transform);
+                            newObject.transform.position = GetChildPositionByName(child, "Graphic");
+                            child.GetComponentInChildren<Breakable>().deathParticles = newObject;
+                            child.GetComponentInChildren<Breakable>().health = 1;
+                            newObject.SetActive(false);
+                        }
+                    }     
+
                 }
                 else
                 {
                     Plane3.x = floor_position.x + width[current - 1];  
+
+                    foreach (Transform child in GameObject.Find("Plane3").transform)
+                    {
+                        child.gameObject.SetActive(true);
+                        if(child.gameObject.name.Equals("BreakableWall"))
+                        {
+                            GameObject newObject = Instantiate(deathParticles, child.gameObject.transform);
+                            newObject.transform.position = GetChildPositionByName(child, "Graphic");
+                            child.GetComponentInChildren<Breakable>().deathParticles = newObject;
+                            child.GetComponentInChildren<Breakable>().health = 1;
+                            newObject.SetActive(false);
+                        }
+                    }   
+                    
                 }
             }
         }
@@ -64,5 +107,18 @@ public class Infinite : MonoBehaviour
         GameObject.Find("Plane2").transform.position = Plane2;
         GameObject.Find("Plane3").transform.position = Plane3;  
 
+    }
+
+    public Vector3 GetChildPositionByName(Transform parent, string childName)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == childName)
+            {
+                return child.position;
+            }
+        }
+
+        return new Vector3(0, 0, 0);
     }
 }
