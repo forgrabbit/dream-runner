@@ -143,11 +143,6 @@ public class Collectable : MonoBehaviour
             NewPlayer.Instance.StopEffect(ItemType.FPGA, 2f);
         }
 
-        GameManager.Instance.audioSource.PlayOneShot(collectSounds[Random.Range(0, collectSounds.Length)], Random.Range(.6f, 1f));
-
-        NewPlayer.Instance.FlashEffect();
-
-
         //If my parent has an Ejector script, it means that my parent is actually what needs to be destroyed, along with me, once collected
         if (transform.parent.GetComponent<Ejector>() != null)
         {
@@ -155,10 +150,14 @@ public class Collectable : MonoBehaviour
             transform.parent.gameObject.SetActive(false);
         }
         else
-        {
+        {   
             //Destroy(gameObject);
             transform.gameObject.SetActive(false);
         }
+        
+        GameManager.Instance.audioSource.PlayOneShot(collectSounds[Random.Range(0, collectSounds.Length)], Random.Range(.6f, 1f));
+
+        NewPlayer.Instance.FlashEffect();
 
     }
 
