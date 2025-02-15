@@ -7,7 +7,7 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
 
-    enum ItemType { InventoryItem, Coin, Health, Ammo }; //Creates an ItemType category
+    public enum ItemType { InventoryItem, Coin, Health, Ammo, bed, dragon, enemy, coffee_bean, ddl, diode1, diode2, cup, boxing, FPGA }; //Creates an ItemType category
     [SerializeField] ItemType itemType; //Allows us to select what type of item the gameObject is in the inspector
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip bounceSound;
@@ -78,6 +78,68 @@ public class Collectable : MonoBehaviour
                 NewPlayer.Instance.ammo += itemAmount;
             }
         }
+        else if (itemType == ItemType.bed)
+        {
+            if (!NewPlayer.Instance.super_armor)
+            {
+                GameManager.Instance.hud.HealthBarHurt();
+                NewPlayer.Instance.health -= itemAmount;
+                //todo:睡醒进度
+            }
+        }
+        else if (itemType == ItemType.dragon)
+        {   
+            if (!NewPlayer.Instance.super_armor)
+            {
+                GameManager.Instance.hud.HealthBarHurt();
+                NewPlayer.Instance.health -= itemAmount*3;
+            }
+        }
+        else if (itemType == ItemType.enemy)
+        {
+            if (!NewPlayer.Instance.super_armor)
+            {
+                GameManager.Instance.hud.HealthBarHurt();
+                NewPlayer.Instance.health -= itemAmount*2;
+            }
+        }
+        else if (itemType == ItemType.coffee_bean)
+        {
+            //todo:咖啡豆
+        }
+        else if (itemType == ItemType.ddl)
+        {
+            //todo:ddl
+        }
+        else if (itemType == ItemType.diode1)
+        {
+            //todo:加速
+        }
+        else if (itemType == ItemType.diode2)
+        {
+            //todo:减速
+        }
+        else if (itemType == ItemType.cup)
+        {
+            if (NewPlayer.Instance.health < NewPlayer.Instance.maxHealth)
+            {
+                GameManager.Instance.hud.HealthBarHurt();
+                NewPlayer.Instance.health += itemAmount;
+            }
+            //todo:速度加成
+        }
+        else if (itemType == ItemType.boxing)
+        {
+            NewPlayer.Instance.super_armor = true;
+            NewPlayer.Instance.StopEffect(ItemType.boxing, 2f);
+            //todo:无敌效果图
+        }
+        else if (itemType == ItemType.FPGA)
+        {
+            Debug.Log("FPGA collected, stopping runRightSpeed");
+            NewPlayer.Instance.runRightSpeed = 0;
+            NewPlayer.Instance.StopEffect(ItemType.FPGA, 2f);
+        }
 
         GameManager.Instance.audioSource.PlayOneShot(collectSounds[Random.Range(0, collectSounds.Length)], Random.Range(.6f, 1f));
 
@@ -87,11 +149,13 @@ public class Collectable : MonoBehaviour
         //If my parent has an Ejector script, it means that my parent is actually what needs to be destroyed, along with me, once collected
         if (transform.parent.GetComponent<Ejector>() != null)
         {
-            Destroy(transform.parent.gameObject);
+            //Destroy(transform.parent.gameObject);
+            transform.parent.gameObject.SetActive(false);
         }
         else
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            transform.gameObject.SetActive(false);
         }
 
     }

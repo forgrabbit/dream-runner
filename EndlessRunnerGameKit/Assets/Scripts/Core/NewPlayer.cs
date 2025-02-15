@@ -39,10 +39,13 @@ public class NewPlayer : PhysicsObject
 
     [Header("Properties")]
     [SerializeField] private bool alwaysRunRight = false;
-    [SerializeField] private float runRightSpeed = 2;
+
+    [SerializeField] public float runRightSpeed = 2;
+
     [SerializeField] private string[] cheatItems;
     public bool dead = false;
     public bool frozen = false;
+    public bool super_armor = false;
     private float fallForgivenessCounter; //Counts how long the player has fallen off a ledge
     [SerializeField] private float fallForgiveness = .2f; //How long the player can fall from a ledge and still jump
     [System.NonSerialized] public string groundType = "grass";
@@ -80,6 +83,10 @@ public class NewPlayer : PhysicsObject
     public AudioClip outOfAmmoSound;
     public AudioClip stepSound;
     [System.NonSerialized] public int whichHurtSound;
+    public bool firstLanded = false;
+    public float startTime = 60f;
+    public float currentTime;
+    public bool stopTime = false;
 
     void Start()
     {
@@ -92,6 +99,8 @@ public class NewPlayer : PhysicsObject
         
         //Find all sprites so we can hide them when the player dies.
         graphicSprites = GetComponentsInChildren<SpriteRenderer>();
+
+        currentTime = startTime;
 
         SetGroundType();
     }
@@ -131,16 +140,15 @@ public class NewPlayer : PhysicsObject
         //Lerp launch back to zero at all times
         launch += (0 - launch) * Time.deltaTime * launchRecovery;
 
-        if (Input.GetButtonDown("Cancel"))
-        {
-            pauseMenu.SetActive(true);
-        }
-
-        
-
         //Movement, jumping, and attacking!
         if (!frozen)
         {
+
+            if (Input.GetButtonDown("Cancel"))
+            {
+                pauseMenu.SetActive(true);
+            }
+
             if (!alwaysRunRight)
             {
                 move.x = Input.GetAxis("Horizontal") + launch;
@@ -236,6 +244,7 @@ public class NewPlayer : PhysicsObject
                 }
                 else
                 {
+                    firstLanded = true;
                     animator.SetBool("grounded", false);
                 }
             }
@@ -259,6 +268,8 @@ public class NewPlayer : PhysicsObject
             animator.SetInteger("moveDirection", (int)move.x);
             animator.SetBool("hasChair", GameManager.Instance.inventory.ContainsKey("chair"));
             targetVelocity = move * maxSpeed;
+
+            // currentTime -= Time.deltaTime;
 
         }
         else
@@ -366,9 +377,9 @@ public class NewPlayer : PhysicsObject
             Hide(true);
             Time.timeScale = .6f;
             yield return new WaitForSeconds(1f);
-            GameManager.Instance.hud.animator.SetTrigger("coverScreen");
-            GameManager.Instance.hud.loadSceneName = SceneManager.GetActiveScene().name;
-            Time.timeScale = 1f;
+            // GameManager.Instance.hud.animator.SetTrigger("coverScreen");
+            // GameManager.Instance.hud.loadSceneName = SceneManager.GetActiveScene().name;
+            // Time.timeScale = 1f;
             Debug.Log("DIED!");
         }
     }
@@ -488,6 +499,24 @@ public class NewPlayer : PhysicsObject
         for (int i = 0; i < cheatItems.Length; i++)
         {
             GameManager.Instance.GetInventoryItem(cheatItems[i], null);
+        }
+    }
+
+    public void StopEffect(Collectable.ItemType itemType, float time)
+    {
+        StartCoroutine(StopEffectCoroutine(itemType, time));
+    }
+
+    private IEnumerator StopEffectCoroutine(Collectable.ItemType itemType, float time)
+    {
+        yield return new WaitForSeconds(time);
+        if (itemType == Collectable.ItemType.boxing)
+        {
+            super_armor = false;
+        }
+        else if (itemType == Collectable.ItemType.FPGA)
+        {
+            runRightSpeed = 1;
         }
     }
 }
