@@ -61,6 +61,10 @@ public class Collectable : MonoBehaviour
         else if (itemType == ItemType.Coin)
         {
             NewPlayer.Instance.coins += itemAmount;
+            if(NewPlayer.Instance.coins > NewPlayer.Instance.max_coins)
+            {
+                NewPlayer.Instance.coins = NewPlayer.Instance.max_coins;
+            }
         }
         else if (itemType == ItemType.Health)
         {
@@ -113,11 +117,13 @@ public class Collectable : MonoBehaviour
         }
         else if (itemType == ItemType.diode1)
         {
-            //todo:加速
+            NewPlayer.Instance.runRightSpeed = 2f;
+            NewPlayer.Instance.StopEffect(ItemType.diode1, 3f);
         }
         else if (itemType == ItemType.diode2)
         {
-            //todo:减速
+            NewPlayer.Instance.runRightSpeed = 0.5f;
+            NewPlayer.Instance.StopEffect(ItemType.diode2, 3f);
         }
         else if (itemType == ItemType.cup)
         {
@@ -126,25 +132,20 @@ public class Collectable : MonoBehaviour
                 GameManager.Instance.hud.HealthBarHurt();
                 NewPlayer.Instance.health += itemAmount;
             }
-            //todo:速度加成
+            NewPlayer.Instance.runRightSpeed = 1.5f;
+            NewPlayer.Instance.StopEffect(ItemType.cup, 5f);
         }
         else if (itemType == ItemType.boxing)
         {
             NewPlayer.Instance.super_armor = true;
-            NewPlayer.Instance.StopEffect(ItemType.boxing, 2f);
+            NewPlayer.Instance.StopEffect(ItemType.boxing, 5f);
             //todo:无敌效果图
         }
         else if (itemType == ItemType.FPGA)
         {
-            Debug.Log("FPGA collected, stopping runRightSpeed");
             NewPlayer.Instance.runRightSpeed = 0;
             NewPlayer.Instance.StopEffect(ItemType.FPGA, 2f);
         }
-
-        GameManager.Instance.audioSource.PlayOneShot(collectSounds[Random.Range(0, collectSounds.Length)], Random.Range(.6f, 1f));
-
-        NewPlayer.Instance.FlashEffect();
-
 
         //If my parent has an Ejector script, it means that my parent is actually what needs to be destroyed, along with me, once collected
         if (transform.parent.GetComponent<Ejector>() != null)
@@ -153,10 +154,14 @@ public class Collectable : MonoBehaviour
             transform.parent.gameObject.SetActive(false);
         }
         else
-        {
+        {   
             //Destroy(gameObject);
             transform.gameObject.SetActive(false);
         }
+        
+        GameManager.Instance.audioSource.PlayOneShot(collectSounds[Random.Range(0, collectSounds.Length)], Random.Range(.6f, 1f));
+
+        NewPlayer.Instance.FlashEffect();
 
     }
 
