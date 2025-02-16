@@ -88,7 +88,10 @@ public class Collectable : MonoBehaviour
             {
                 GameManager.Instance.hud.HealthBarHurt();
                 NewPlayer.Instance.health -= itemAmount;
-                //todo:睡醒进度
+                if(NewPlayer.Instance.coins > 0)
+                {
+                    NewPlayer.Instance.coins -= 1;
+                }
             }
         }
         else if (itemType == ItemType.dragon)
@@ -109,11 +112,19 @@ public class Collectable : MonoBehaviour
         }
         else if (itemType == ItemType.coffee_bean)
         {
-            //todo:咖啡豆
+            NewPlayer.Instance.coins += itemAmount*2;
+            if(NewPlayer.Instance.coins > NewPlayer.Instance.max_coins)
+            {
+                NewPlayer.Instance.coins = NewPlayer.Instance.max_coins;
+            }
         }
         else if (itemType == ItemType.ddl)
         {
-            //todo:ddl
+            NewPlayer.Instance.coins += itemAmount*3;
+            if(NewPlayer.Instance.coins > NewPlayer.Instance.max_coins)
+            {
+                NewPlayer.Instance.coins = NewPlayer.Instance.max_coins;
+            }
         }
         else if (itemType == ItemType.diode1)
         {
