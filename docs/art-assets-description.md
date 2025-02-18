@@ -37,6 +37,8 @@
 
 设计相应形象即可。
 
+![alt text](images/npc.jpg)
+
 
 
 
