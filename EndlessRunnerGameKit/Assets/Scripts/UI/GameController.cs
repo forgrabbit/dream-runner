@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Services.Leaderboards;
 
 public class GameController : MonoBehaviour
 {
@@ -24,14 +26,26 @@ public class GameController : MonoBehaviour
             NewPlayer.Instance.stopTime = true;
             victoryMenu.SetActive(true);
             float newTime = NewPlayer.Instance.startTime - NewPlayer.Instance.currentTime;
+            int newScore = CalculateScore(newTime);
             gameObject.GetComponent<Record>().LoadGame();
-            if(newTime < gameObject.GetComponent<Record>().saveData.minTime)
+            if(newScore > gameObject.GetComponent<Record>().saveData.score)
             {
-                gameObject.GetComponent<Record>().saveData.minTime = newTime;
+                if(!gameObject.GetComponent<Record>().saveData.hasScore)
+                {
+                    gameObject.GetComponent<Record>().saveData.hasScore = true;
+                    AddScoreAsync(newScore);
+                }
+                else
+                {
+                    int scoreAdd = newScore - gameObject.GetComponent<Record>().saveData.score;
+                    AddScoreAsync(scoreAdd);
+                }
+                gameObject.GetComponent<Record>().saveData.score = newScore;
                 gameObject.GetComponent<Record>().SaveGame();
             }
-            GameObject.Find("VictoryMenu/TimeShow").GetComponent<Text>().text = "本局用时：" + newTime.ToString("F2") + "s" + "\n"
-            + "历史用时：" + gameObject.GetComponent<Record>().saveData.minTime.ToString("F2") + "s"; 
+            GameObject.Find("VictoryMenu/Victory").GetComponent<Text>().text = "任务完成, 耗时" + newTime.ToString("F2") + "s";
+            GameObject.Find("VictoryMenu/ScoreShow").GetComponent<Text>().text = "本局得分：" + newScore + "\n"
+            + "历史得分：" + gameObject.GetComponent<Record>().saveData.score; 
         }
 
         if(NewPlayer.Instance.currentTime <= 0 && NewPlayer.Instance.coins < 20)
@@ -39,6 +53,23 @@ public class GameController : MonoBehaviour
             NewPlayer.Instance.runRightSpeed = 0;
             timeoutMenu.SetActive(true);
         }
+    }
+
+    public async void AddScoreAsync(int score)
+    {
+        try
+        {
+            var playerEntry = await LeaderboardsService.Instance.AddPlayerScoreAsync("dreamrunner2025", score);
+        }
+        catch (Exception exception)
+        {
+            Debug.Log(exception.Message);
+        }
+    }
+
+    public int CalculateScore(float time)
+    {
+        return 36000 - Mathf.FloorToInt(100 * time);
     }
 
 }
