@@ -10457,7 +10457,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveData:
-    minTime: 1000
+    score: 0
+    hasScore: 0
 --- !u!1001 &6464411872727200495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10579,6 +10580,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1127743474456398540, guid: 49321295a334b4444ad30fc21ae937d6,
+        type: 3}
+      propertyPath: m_Name
+      value: ScoreShow
+      objectReference: {fileID: 0}
     - target: {fileID: 6606329085076666168, guid: 49321295a334b4444ad30fc21ae937d6,
         type: 3}
       propertyPath: m_Pivot.x
@@ -10689,6 +10695,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: VictoryMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6606329085076666308, guid: 49321295a334b4444ad30fc21ae937d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606329086084814826, guid: 49321295a334b4444ad30fc21ae937d6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606329086084814827, guid: 49321295a334b4444ad30fc21ae937d6,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u4EFB\u52A1\u5B8C\u6210\uFF0C\u8017\u65F6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851223741073021548, guid: 49321295a334b4444ad30fc21ae937d6,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u672C\u5C40\u5F97\u5206\uFF1A\n\u5386\u53F2\u5F97\u5206\uFF1A"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49321295a334b4444ad30fc21ae937d6, type: 3}
 --- !u!1001 &7018260866872453974
@@ -10756,7 +10782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4039398741816762, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.367273
+      value: -25.843964
       objectReference: {fileID: 0}
     - target: {fileID: 4039398741816762, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10772,7 +10798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4569125025086690, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.367273
+      value: -25.843964
       objectReference: {fileID: 0}
     - target: {fileID: 4569125025086690, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.y
