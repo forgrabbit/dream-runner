@@ -12,6 +12,7 @@ public class AuthenticationMenu : Panel
     // [SerializeField] private Button signinButton = null;
     // [SerializeField] private Button signupButton = null;
     [SerializeField] private Button anonymousButton = null;
+    [SerializeField] private Button quitButton = null;
 
     public override void Initialize()
     {
@@ -20,6 +21,7 @@ public class AuthenticationMenu : Panel
             return;
         }
         anonymousButton.onClick.AddListener(AnonymousSignIn);
+        quitButton.onClick.AddListener(Quit);
         // signinButton.onClick.AddListener(SignIn);
         // signupButton.onClick.AddListener(SignUp);
         base.Initialize();
@@ -35,6 +37,11 @@ public class AuthenticationMenu : Panel
     private void AnonymousSignIn()
     {
         MenuManager.Singleton.SignInAnonymouslyAsync();
+    }
+
+    private void Quit()
+    {
+        Application.Quit();
     }
 
     // private void SignIn()
