@@ -61,6 +61,15 @@ public class HUD : MonoBehaviour
         healthBarWidthEased += (healthBarWidth - healthBarWidthEased) * Time.deltaTime * 10;
         healthBar.transform.localScale = new Vector2(healthBarWidthEased, 1);
 
+        if(NewPlayer.Instance.super_armor)
+        {
+            healthBar.GetComponent<Image>().color = new Color(0.54f, 0.17f, 0.89f);
+        }
+        else
+        {
+            healthBar.GetComponent<Image>().color = new Color(1,0,0);
+        }
+
         //Controls the width of the ammo bar based on the player's total ammo
         if (ammoBar)
         {

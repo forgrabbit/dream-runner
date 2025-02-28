@@ -1,14 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Infinite : MonoBehaviour
 {
-    GameObject mainCam;
-    int[] width = {165, 160, 185};
-    [SerializeField] GameObject deathParticles;
+    private GameObject mainCam;
+    private int[] width = {165, 160, 185};
+    [SerializeField] private GameObject deathParticles;
+    private List<Transform> props1 = new List<Transform>(); 
+    private List<Transform> props2 = new List<Transform>();
+    private List<Transform> props3 = new List<Transform>();
+
     private void Start()
     {
+        // to find the props in plane1 
+        foreach (Transform child in GameObject.Find("Plane1").transform)
+        {
+            if(child.gameObject.GetComponent<Collectable>() != null)
+            {
+                child.gameObject.SetActive(false);
+                props1.Add(child);
+            }
+        } 
+        foreach (Transform child in GameObject.Find("Plane2").transform)
+        {
+            if(child.gameObject.GetComponent<Collectable>() != null)
+            {
+                child.gameObject.SetActive(false);
+                props2.Add(child);
+            }
+        } 
+        foreach (Transform child in GameObject.Find("Plane3").transform)
+        {
+            if(child.gameObject.GetComponent<Collectable>() != null)
+            {
+                child.gameObject.SetActive(false);
+                props3.Add(child);
+            }
+        }
+
+        for (int i = props1.Count - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            Transform temp = props1[i];
+            props1[i] = props1[randomIndex];
+            props1[randomIndex] = temp;
+        }
+
+        for (int i = props2.Count - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            Transform temp = props2[i];
+            props2[i] = props2[randomIndex];
+            props2[randomIndex] = temp;
+        }
+
+        for (int i = props3.Count - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            Transform temp = props3[i];
+            props3[i] = props3[randomIndex];
+            props3[randomIndex] = temp;
+        }
+
+        // active first 10 objects
+        for (int i = 0; i < 10; i++)
+        {
+            props1[i].gameObject.SetActive(true);
+            props2[i].gameObject.SetActive(true);
+            props3[i].gameObject.SetActive(true);
+        }
+
         mainCam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
@@ -48,55 +111,89 @@ public class Infinite : MonoBehaviour
                 if(randomNumber == 1)
                 {
                     Plane1.x = floor_position.x + width[current - 1];
-
-                    foreach (Transform child in GameObject.Find("Plane1").transform)
+                    for (int i = props1.Count - 1; i > 0; i--)
                     {
-                        child.gameObject.SetActive(true);
-                        if(child.gameObject.name.Equals("BreakableWall"))
-                        {
-                            GameObject newObject = Instantiate(deathParticles, child.gameObject.transform);
-                            newObject.transform.position = GetChildPositionByName(child, "Graphic");
-                            child.GetComponentInChildren<Breakable>().deathParticles = newObject;
-                            child.GetComponentInChildren<Breakable>().health = 1;
-                            newObject.SetActive(false);
-                        }
-                    }   
+                        int randomIndex = Random.Range(0, i + 1);
+                        Transform temp = props1[i];
+                        props1[i] = props1[randomIndex];
+                        props1[randomIndex] = temp;
+                    }
+                    for (int i = 0; i < 10; i++)
+                    {
+                        props1[i].gameObject.SetActive(true);
+                    }
+
+
+                    // foreach (Transform child in GameObject.Find("Plane1").transform)
+                    // {
+                    //     child.gameObject.SetActive(true);
+                    //     if(child.gameObject.name.Equals("BreakableWall"))
+                    //     {
+                    //         GameObject newObject = Instantiate(deathParticles, child.gameObject.transform);
+                    //         newObject.transform.position = GetChildPositionByName(child, "Graphic");
+                    //         child.GetComponentInChildren<Breakable>().deathParticles = newObject;
+                    //         child.GetComponentInChildren<Breakable>().health = 1;
+                    //         newObject.SetActive(false);
+                    //     }
+                    // }   
 
                 }
                 else if(randomNumber == 2)
                 {
                     Plane2.x = floor_position.x + width[current - 1];
-
-                    foreach (Transform child in GameObject.Find("Plane2").transform)
+                    for (int i = props2.Count - 1; i > 0; i--)
                     {
-                        child.gameObject.SetActive(true);
-                        if(child.gameObject.name.Equals("BreakableWall"))
-                        {
-                            GameObject newObject = Instantiate(deathParticles, child.gameObject.transform);
-                            newObject.transform.position = GetChildPositionByName(child, "Graphic");
-                            child.GetComponentInChildren<Breakable>().deathParticles = newObject;
-                            child.GetComponentInChildren<Breakable>().health = 1;
-                            newObject.SetActive(false);
-                        }
-                    }     
+                        int randomIndex = Random.Range(0, i + 1);
+                        Transform temp = props2[i];
+                        props2[i] = props2[randomIndex];
+                        props2[randomIndex] = temp;
+                    }
+                    for (int i = 0; i < 10; i++)
+                    {
+                        props2[i].gameObject.SetActive(true);
+                    }
+
+                    // foreach (Transform child in GameObject.Find("Plane2").transform)
+                    // {
+                    //     child.gameObject.SetActive(true);
+                    //     if(child.gameObject.name.Equals("BreakableWall"))
+                    //     {
+                    //         GameObject newObject = Instantiate(deathParticles, child.gameObject.transform);
+                    //         newObject.transform.position = GetChildPositionByName(child, "Graphic");
+                    //         child.GetComponentInChildren<Breakable>().deathParticles = newObject;
+                    //         child.GetComponentInChildren<Breakable>().health = 1;
+                    //         newObject.SetActive(false);
+                    //     }
+                    // }     
 
                 }
                 else
                 {
-                    Plane3.x = floor_position.x + width[current - 1];  
-
-                    foreach (Transform child in GameObject.Find("Plane3").transform)
+                    Plane3.x = floor_position.x + width[current - 1]; 
+                    for (int i = props3.Count - 1; i > 0; i--)
                     {
-                        child.gameObject.SetActive(true);
-                        if(child.gameObject.name.Equals("BreakableWall"))
-                        {
-                            GameObject newObject = Instantiate(deathParticles, child.gameObject.transform);
-                            newObject.transform.position = GetChildPositionByName(child, "Graphic");
-                            child.GetComponentInChildren<Breakable>().deathParticles = newObject;
-                            child.GetComponentInChildren<Breakable>().health = 1;
-                            newObject.SetActive(false);
-                        }
-                    }   
+                        int randomIndex = Random.Range(0, i + 1);
+                        Transform temp = props3[i];
+                        props3[i] = props3[randomIndex];
+                        props3[randomIndex] = temp;
+                    }
+                    for (int i = 0; i < 10; i++)
+                    {
+                        props3[i].gameObject.SetActive(true);
+                    } 
+
+                    // foreach (Transform child in GameObject.Find("Plane3").transform)
+                    // {
+                    //     child.gameObject.SetActive(true);
+                    //     if(child.gameObject.name.Equals("BreakableWall"))
+                    //     {
+                    //         GameObject newObject = Instantiate(deathParticles, child.gameObject.transform);
+                    //         newObject.transform.position = GetChildPositionByName(child, "Graphic");
+                    //         child.GetComponentInChildren<Breakable>().deathParticles = newObject;
+                    //         child.GetComponentInChildren<Breakable>().health = 1;
+                    //         newObject.SetActive(false);
+                    //     }
+                    // }   
                     
                 }
             }

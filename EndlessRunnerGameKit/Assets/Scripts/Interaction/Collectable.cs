@@ -22,6 +22,7 @@ public class Collectable : MonoBehaviour
     public float speedMultiplier = 10;
     public bool flyToPlayer; //Fly to player after .5 seconds
     private Rigidbody2D rigidbody;
+    private int targetSide = 1;
 
 
     void Start()
@@ -32,6 +33,15 @@ public class Collectable : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (transform.position.x < col.transform.position.x)
+        {
+            targetSide = 1;
+        }
+        else
+        {
+            targetSide = -1;
+        }
+
         if (col.gameObject == NewPlayer.Instance.gameObject)
         {
             Collect();
@@ -87,10 +97,10 @@ public class Collectable : MonoBehaviour
             if (!NewPlayer.Instance.super_armor)
             {
                 GameManager.Instance.hud.HealthBarHurt();
-                NewPlayer.Instance.health -= itemAmount;
+                NewPlayer.Instance.GetHurt(targetSide, itemAmount);
                 if(NewPlayer.Instance.coins > 0)
                 {
-                    NewPlayer.Instance.coins -= 1;
+                    NewPlayer.Instance.coins -= itemAmount;
                 }
             }
         }
@@ -99,7 +109,7 @@ public class Collectable : MonoBehaviour
             if (!NewPlayer.Instance.super_armor)
             {
                 GameManager.Instance.hud.HealthBarHurt();
-                NewPlayer.Instance.health -= itemAmount*3;
+                NewPlayer.Instance.GetHurt(targetSide, itemAmount);
             }
         }
         else if (itemType == ItemType.enemy)
@@ -107,7 +117,7 @@ public class Collectable : MonoBehaviour
             if (!NewPlayer.Instance.super_armor)
             {
                 GameManager.Instance.hud.HealthBarHurt();
-                NewPlayer.Instance.health -= itemAmount*2;
+                NewPlayer.Instance.GetHurt(targetSide, itemAmount);
             }
         }
         else if (itemType == ItemType.coffee_bean)
@@ -141,7 +151,7 @@ public class Collectable : MonoBehaviour
             if (NewPlayer.Instance.health < NewPlayer.Instance.maxHealth)
             {
                 GameManager.Instance.hud.HealthBarHurt();
-                NewPlayer.Instance.health += itemAmount;
+                NewPlayer.Instance.health += itemAmount*3;
             }
             NewPlayer.Instance.runRightSpeed = 1.5f;
             NewPlayer.Instance.StopEffect(ItemType.cup, 5f);
@@ -150,7 +160,8 @@ public class Collectable : MonoBehaviour
         {
             NewPlayer.Instance.super_armor = true;
             NewPlayer.Instance.StopEffect(ItemType.boxing, 5f);
-            //todo:无敌效果图
+            //todo:无敌效果图,血条变色
+            
         }
         else if (itemType == ItemType.FPGA)
         {

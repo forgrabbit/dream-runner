@@ -47,12 +47,13 @@ public class LeaderboardsMenu : Panel
         ClearPlayersList();
         currentPage = 1;
         totalPages = 0;
+        AddScoreAsync(0);
         LoadPlayers(1);
     }
     
     private void AddScore()
     {
-        AddScoreAsync(-97207);
+        AddScoreAsync(0);
     }
     
     public async void AddScoreAsync(int score)
@@ -80,20 +81,18 @@ public class LeaderboardsMenu : Panel
             options.Offset = (page - 1) * playersPerPage;
             options.Limit = playersPerPage;
             var scores = await LeaderboardsService.Instance.GetScoresAsync("dreamrunner2025", options);
+            var playerscore = await LeaderboardsService.Instance.GetPlayerScoreAsync("dreamrunner2025");
             ClearPlayersList();
             for (int i = 0; i < scores.Results.Count; i++)
             {
-                if(AuthenticationService.Instance.PlayerName == scores.Results[i].PlayerName)
-                {
-                    playerRankText.text = "Your rank: " + (scores.Results[i].Rank + 1).ToString();
-                    playerScoreText.text = "Score: " + (scores.Results[i].Score).ToString();
-                }
                 Vector2 spawnPosition = new Vector2(0, -75-i * 150); 
                 LeaderboardsPlayerItem item = Instantiate(playerItemPrefab, playersContainer);
                 item.Initialize(scores.Results[i]);
                 RectTransform rectTransform = item.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = spawnPosition;
             }
+            playerRankText.text = "Your rank: " + (playerscore.Rank + 1).ToString();
+            playerScoreText.text = "Score: " + (playerscore.Score).ToString();
             totalPages = Mathf.CeilToInt((float)scores.Total / (float)scores.Limit);
             currentPage = page;
         }

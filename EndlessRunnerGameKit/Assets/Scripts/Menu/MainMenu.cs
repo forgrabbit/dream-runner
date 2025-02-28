@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using Unity.Services.Authentication;
+using Unity.Services.Leaderboards;
 using UnityEngine.UI;
 
 public class MainMenu : Panel
@@ -14,6 +15,7 @@ public class MainMenu : Panel
     [SerializeField] private Button gameButton = null;
     [SerializeField] private Button leaderboardsButton = null;
     [SerializeField] private Button renameButton = null;
+    [SerializeField] private Button quitButton = null;
     [SerializeField] private string whichScene;
 
     public override void Initialize()
@@ -26,6 +28,7 @@ public class MainMenu : Panel
         gameButton.onClick.AddListener(StartGame);
         leaderboardsButton.onClick.AddListener(Leaderboards);
         renameButton.onClick.AddListener(RenamePlayer);
+        quitButton.onClick.AddListener(Quit);
         base.Initialize();
     }
     
@@ -38,6 +41,11 @@ public class MainMenu : Panel
     private void SignOut()
     {
         MenuManager.Singleton.SignOut();
+    }
+
+    private void Quit()
+    {
+        Application.Quit();
     }
     
     private void UpdatePlayerNameUI()
