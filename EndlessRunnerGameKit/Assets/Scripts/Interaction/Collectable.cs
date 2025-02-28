@@ -7,7 +7,7 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
 
-    public enum ItemType { InventoryItem, Coin, Health, Ammo, bed, dragon, enemy, coffee_bean, ddl, diode1, diode2, cup, boxing, FPGA }; //Creates an ItemType category
+    public enum ItemType { InventoryItem, Coin, Health, Ammo, bed, dragon, enemy, coffee_bean, homework, diode1, diode2, cup, boxing, FPGA }; //Creates an ItemType category
     [SerializeField] ItemType itemType; //Allows us to select what type of item the gameObject is in the inspector
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip bounceSound;
@@ -118,7 +118,7 @@ public class Collectable : MonoBehaviour
                 NewPlayer.Instance.coins = NewPlayer.Instance.max_coins;
             }
         }
-        else if (itemType == ItemType.ddl)
+        else if (itemType == ItemType.homework)
         {
             NewPlayer.Instance.coins += itemAmount*3;
             if(NewPlayer.Instance.coins > NewPlayer.Instance.max_coins)
