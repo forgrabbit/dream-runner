@@ -65,7 +65,7 @@ public class NewPlayer : PhysicsObject
     [Header ("Inventory")]
     public float ammo;
     public int coins;
-    public int max_coins = 20;
+    public int max_coins = 100;
     public int health;
     public int maxHealth;
     public int maxAmmo;
@@ -204,37 +204,37 @@ public class NewPlayer : PhysicsObject
             }
 
 
-            //Flip the graphic's localScale 
-            if (Input.GetAxis("Horizontal") < -0.01f && (!grounded || Input.GetMouseButtonDown(0)))
-            {
-              // graphic.transform.localScale = new Vector3(-origLocalScale.x, transform.localScale.y, transform.localScale.z);
-            }
-            else
-            {
-               // graphic.transform.localScale = new Vector3(origLocalScale.x, transform.localScale.y, transform.localScale.z);
-            }
+            // //Flip the graphic's localScale 
+            // if (Input.GetAxis("Horizontal") < -0.01f && (!grounded || Input.GetMouseButtonDown(0)))
+            // {
+            //   // graphic.transform.localScale = new Vector3(-origLocalScale.x, transform.localScale.y, transform.localScale.z);
+            // }
+            // else
+            // {
+            //    // graphic.transform.localScale = new Vector3(origLocalScale.x, transform.localScale.y, transform.localScale.z);
+            // }
 
-            //Punch
-            if (Input.GetMouseButtonDown(0))
-            {
-                animator.SetTrigger("attack");
-                Shoot(false);
-            }
+            // //Punch
+            // if (Input.GetMouseButtonDown(0))
+            // {
+            //     animator.SetTrigger("attack");
+            //     Shoot(false);
+            // }
 
-            //Secondary attack (currently shooting) with right click
-            if (Input.GetMouseButtonDown(1))
-            {
-                Shoot(true);
-            }
-            else if (Input.GetMouseButtonUp(1))
-            {
-                Shoot(false);
-            }
+            // //Secondary attack (currently shooting) with right click
+            // if (Input.GetMouseButtonDown(1))
+            // {
+            //     Shoot(true);
+            // }
+            // else if (Input.GetMouseButtonUp(1))
+            // {
+            //     Shoot(false);
+            // }
 
-            if (shooting)
-            {
-                SubtractAmmo();
-            }
+            // if (shooting)
+            // {
+            //     SubtractAmmo();
+            // }
 
             //Allow the player to jump even if they have just fallen off an edge ("fall forgiveness")
             if (!grounded)
