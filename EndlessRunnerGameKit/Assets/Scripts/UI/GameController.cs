@@ -59,9 +59,9 @@ public class GameController : MonoBehaviour
                 AddScoreAsync(newScore - oldScore);
                 oldScore = newScore;
             }
-            GameObject.Find("VictoryMenu/Victory").GetComponent<Text>().text = "任务完成, 耗时" + newTime.ToString("F2") + "s";
-            GameObject.Find("VictoryMenu/ScoreShow").GetComponent<Text>().text = "本局得分：" + newScore.ToString() + "\n"
-            + "历史得分：" + oldScore.ToString(); 
+            GameObject.Find("VictoryMenu/Victory").GetComponent<Text>().text = "本局用时：" + newTime.ToString("F2") + "s";
+            GameObject.Find("VictoryMenu/ScoreShow").GetComponent<Text>().text = "本局得分：" + newScore.ToString();
+            GameObject.Find("VictoryMenu/ScoreShowHistory").GetComponent<Text>().text = "历史得分：" + oldScore.ToString(); 
         }
         catch (Exception exception)
         {

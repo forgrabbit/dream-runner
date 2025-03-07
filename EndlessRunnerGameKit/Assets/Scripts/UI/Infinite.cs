@@ -11,6 +11,11 @@ public class Infinite : MonoBehaviour
     private List<Transform> props1 = new List<Transform>(); 
     private List<Transform> props2 = new List<Transform>();
     private List<Transform> props3 = new List<Transform>();
+    [SerializeField] private GameObject sky1;
+    [SerializeField] private GameObject sky2;
+    [SerializeField] private GameObject sky3;
+    private List<GameObject> Sky = new List<GameObject>();
+
 
     private void Start()
     {
@@ -72,6 +77,10 @@ public class Infinite : MonoBehaviour
             props3[i].gameObject.SetActive(true);
         }
 
+        Sky.Add(sky1);
+        Sky.Add(sky2);
+        Sky.Add(sky3);
+
         mainCam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
@@ -94,10 +103,9 @@ public class Infinite : MonoBehaviour
         {
             current = 3;
         }
-
     
-        if(mainCam.transform.position.x <= floor_position.x + 100 &&
-           mainCam.transform.position.x >= floor_position.x + 70)
+        if(mainCam.transform.position.x <= floor_position.x + 50 &&
+           mainCam.transform.position.x >= floor_position.x + 20)
         {
             if(Plane1.x <= floor_position.x && Plane2.x <= floor_position.x 
             && Plane3.x <= floor_position.x)
@@ -111,6 +119,7 @@ public class Infinite : MonoBehaviour
                 if(randomNumber == 1)
                 {
                     Plane1.x = floor_position.x + width[current - 1];
+                    Sky[0].transform.position = new Vector3(Sky[current - 1].transform.position.x + 33, Sky[current - 1].transform.position.y, Sky[current - 1].transform.position.z);
                     for (int i = props1.Count - 1; i > 0; i--)
                     {
                         int randomIndex = Random.Range(0, i + 1);
@@ -141,6 +150,7 @@ public class Infinite : MonoBehaviour
                 else if(randomNumber == 2)
                 {
                     Plane2.x = floor_position.x + width[current - 1];
+                    Sky[1].transform.position = new Vector3(Sky[current - 1].transform.position.x + 33, Sky[current - 1].transform.position.y, Sky[current - 1].transform.position.z);
                     for (int i = props2.Count - 1; i > 0; i--)
                     {
                         int randomIndex = Random.Range(0, i + 1);
@@ -169,6 +179,7 @@ public class Infinite : MonoBehaviour
                 }
                 else
                 {
+                    Sky[2].transform.position = new Vector3(Sky[current - 1].transform.position.x + 33, Sky[current - 1].transform.position.y, Sky[current - 1].transform.position.z);
                     Plane3.x = floor_position.x + width[current - 1]; 
                     for (int i = props3.Count - 1; i > 0; i--)
                     {
