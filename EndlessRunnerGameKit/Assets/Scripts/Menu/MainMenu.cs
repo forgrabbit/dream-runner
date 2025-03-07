@@ -16,6 +16,7 @@ public class MainMenu : Panel
     [SerializeField] private Button leaderboardsButton = null;
     [SerializeField] private Button renameButton = null;
     [SerializeField] private Button quitButton = null;
+    [SerializeField] private Button helpButton = null;
     [SerializeField] private string whichScene;
 
     public override void Initialize()
@@ -29,6 +30,7 @@ public class MainMenu : Panel
         leaderboardsButton.onClick.AddListener(Leaderboards);
         renameButton.onClick.AddListener(RenamePlayer);
         quitButton.onClick.AddListener(Quit);
+        helpButton.onClick.AddListener(Help);
         base.Initialize();
     }
     
@@ -46,6 +48,11 @@ public class MainMenu : Panel
     private void Quit()
     {
         Application.Quit();
+    }
+
+    private void Help()
+    {
+        PanelManager.Open("help");
     }
     
     private void UpdatePlayerNameUI()
