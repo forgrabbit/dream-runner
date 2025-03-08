@@ -40,7 +40,7 @@ public class NewPlayer : PhysicsObject
     [Header("Properties")]
     [SerializeField] private bool alwaysRunRight = false;
 
-    [SerializeField] public float runRightSpeed = 2;
+    [SerializeField] public float runRightSpeed = 5;
 
     [SerializeField] private string[] cheatItems;
     public bool dead = false;
