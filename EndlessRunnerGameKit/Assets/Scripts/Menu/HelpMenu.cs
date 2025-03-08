@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HelpMenu : Panel
 {
     [SerializeField] private Button returnButton = null;
+    [SerializeField] private Button detailsButton = null;
 
     public override void Initialize()
     {
@@ -14,12 +15,18 @@ public class HelpMenu : Panel
             return;
         }
         returnButton.onClick.AddListener(ClosePanel);
+        detailsButton.onClick.AddListener(OpenDetails);
         base.Initialize();
     }
     
     public override void Open()
     {
         base.Open();
+    }
+
+    public void OpenDetails()
+    {
+        PanelManager.Open("details");
     }
 
     public void ClosePanel()
