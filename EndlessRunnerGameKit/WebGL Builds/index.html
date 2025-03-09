@@ -1,0 +1,37 @@
+<style>
+    .landscape-screen{
+	    transform-origin: top left;
+	    transform: rotate(90deg) translateY(-100%)
+    }
+</style>
+<iframe id="Frame" style="Frame"  src="game.html"></iframe>
+<script>
+    var orientation = window.orientation;
+			
+	//开始时调用
+	var Frame = document.getElementById("Frame");
+	if(orientation == 180 || orientation == 0 || orientation == -180){
+		//注意竖屏时要把 iframe的宽设置为当前窗口的高度 高设置为当前窗口的宽度
+		Frame.height = window.innerWidth;
+		Frame.width = window.innerHeight;
+				
+		//通过css样式旋转90度
+		Frame.classList.add("landscape-screen");
+	}else{
+		//横屏时则正常
+		Frame.height = window.innerHeight;
+		Frame.width = window.innerWidth;
+				
+		//通过移除类去掉css样式
+		Frame.classList.remove("landscape-screen");
+	}
+			
+	//监听手机旋转事件 根据旋转状态设置旋转的css样式
+	window.onorientationchange = function () {
+        if(orientation == 180 || orientation == 0 || orientation == -180){
+			Frame.classList.add("landscape-screen");
+		}else{
+			Frame.classList.remove("landscape-screen");
+		}
+     };
+</script>
