@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 787754829228175929}
   - component: {fileID: 7962181565976495539}
   - component: {fileID: 1906979567047075101}
+  - component: {fileID: -2300658972601909467}
   m_Layer: 0
   m_Name: City1
   m_TagString: Untagged
@@ -143,3 +144,17 @@ PolygonCollider2D:
       - {x: 1.77, y: -2.35}
       - {x: 1.77, y: -1.91}
       - {x: 1.75, y: -1.91}
+--- !u!114 &-2300658972601909467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141413985022579914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4de333cb3c56324796b71b7b3375a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minAlpha: 0.5
+  maxAlpha: 1
