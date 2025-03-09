@@ -91,49 +91,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: EyeL
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1959
-      y: 761
-      width: 40
-      height: 40
-    spriteID: dbe77a645264a7044a77a23d4fe2f651
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 1077, y: -600}
-  - name: EyeR
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1935
-      y: 382
-      width: 40
-      height: 40
-    spriteID: 0e3ca86bb10927046880c330b04b6b5a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 941, y: -979}
-  - name: HandR
+  - name: "\u56FE\u5C42 1"
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -142,30 +100,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1303
-      height: 749
-    spriteID: 5fd7a8731ed96d74fb1dd1456d893677
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -283, y: -796}
-  - name: ArmR
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1113
-      y: 761
       width: 274
-      height: 47
-    spriteID: dca740779aac9ee4f9f31e098c6228c1
+      height: 271
+    spriteID: 943b92fe96703dd488fcb4e7ee639384
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -174,280 +111,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -135, y: -470}
-  - name: BicepR
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1395
-      y: 761
-      width: 274
-      height: 47
-    spriteID: 76c03f55f0735804b942694b9df662d8
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 379, y: -470}
-  - name: Chest
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1315
-      y: 4
-      width: 612
-      height: 418
-    spriteID: d95096890a1c04c468862df6da6b9842
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 831, y: -863}
-  - name: FootR
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1935
-      y: 295
-      width: 78
-      height: 79
-    spriteID: 3fee14ae920276040b18feb110f69419
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 841, y: -73}
-  - name: CalfR
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1935
-      y: 4
-      width: 91
-      height: 283
-    spriteID: f864ded91d510de4a8398197c3122f20
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 875, y: -402}
-  - name: ThighR
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 772
-      y: 761
-      width: 113
-      height: 311
-    spriteID: 24ab20c40ad06dd46b93a82b520f6f82
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -221, y: 115}
-  - name: FootL
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 772
-      y: 1080
-      width: 78
-      height: 79
-    spriteID: 0a741d7e839b53a47aec71553749a2d2
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 32, y: 712}
-  - name: CalfL
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1014
-      y: 761
-      width: 91
-      height: 283
-    spriteID: 3efea6aa0a01c8346aabd2991423abe3
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 252, y: 355}
-  - name: ThighL
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 893
-      y: 761
-      width: 113
-      height: 311
-    spriteID: d7190ec2b7bf8e64e80c129e6b404508
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 87, y: 115}
-  - name: HandL
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 772
-      y: 1167
-      width: 76
-      height: 76
-    spriteID: 961f9e12e96520c49989024f3d18442b
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 403, y: -49}
-  - name: ArmL
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1677
-      y: 761
-      width: 274
-      height: 47
-    spriteID: 2d580b20817396f4c84f9a288ee02418
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 1282, y: -469}
-  - name: BicepL
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1113
-      y: 816
-      width: 274
-      height: 47
-    spriteID: 8d4501d9c5053304799aca8496d807b7
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 486, y: -414}
-  - name: Head
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1315
-      y: 430
-      width: 647
-      height: 272
-    spriteID: bd1a22c9e022b7b4992a801799f7e9fa
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 868, y: -837}
-  - name: Blast
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 761
-      width: 760
-      height: 600
-    spriteID: c1c9773fca9859c4ea40601fa135072e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -1097, y: -196}
+    uvTransform: {x: -816, y: -1264}
   characterData:
     bones: []
     parts: []
@@ -486,8 +150,8 @@ ScriptedImporter:
     layerID: 478
     mosaicPosition: {x: 1959, y: 761}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: EyeR
     spriteName: EyeR
     isGroup: 0
@@ -496,8 +160,8 @@ ScriptedImporter:
     layerID: 477
     mosaicPosition: {x: 1935, y: 382}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: HandR
     spriteName: HandR
     isGroup: 0
@@ -506,8 +170,8 @@ ScriptedImporter:
     layerID: 497
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: ArmR
     spriteName: ArmR
     isGroup: 0
@@ -516,8 +180,8 @@ ScriptedImporter:
     layerID: 466
     mosaicPosition: {x: 1113, y: 761}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: BicepR
     spriteName: BicepR
     isGroup: 0
@@ -526,8 +190,8 @@ ScriptedImporter:
     layerID: 465
     mosaicPosition: {x: 1395, y: 761}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: Chest
     spriteName: Chest
     isGroup: 0
@@ -536,8 +200,8 @@ ScriptedImporter:
     layerID: 489
     mosaicPosition: {x: 1315, y: 4}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: FootR
     spriteName: FootR
     isGroup: 0
@@ -546,8 +210,8 @@ ScriptedImporter:
     layerID: 473
     mosaicPosition: {x: 1935, y: 295}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: CalfR
     spriteName: CalfR
     isGroup: 0
@@ -556,8 +220,8 @@ ScriptedImporter:
     layerID: 472
     mosaicPosition: {x: 1935, y: 4}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: ThighR
     spriteName: ThighR
     isGroup: 0
@@ -566,8 +230,8 @@ ScriptedImporter:
     layerID: 471
     mosaicPosition: {x: 772, y: 761}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: FootL
     spriteName: FootL
     isGroup: 0
@@ -576,8 +240,8 @@ ScriptedImporter:
     layerID: 470
     mosaicPosition: {x: 772, y: 1080}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: CalfL
     spriteName: CalfL
     isGroup: 0
@@ -586,8 +250,8 @@ ScriptedImporter:
     layerID: 469
     mosaicPosition: {x: 1014, y: 761}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: ThighL
     spriteName: ThighL
     isGroup: 0
@@ -596,8 +260,8 @@ ScriptedImporter:
     layerID: 468
     mosaicPosition: {x: 893, y: 761}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: HandL
     spriteName: HandL
     isGroup: 0
@@ -606,8 +270,8 @@ ScriptedImporter:
     layerID: 464
     mosaicPosition: {x: 772, y: 1167}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: ArmL
     spriteName: ArmL
     isGroup: 0
@@ -616,8 +280,8 @@ ScriptedImporter:
     layerID: 463
     mosaicPosition: {x: 1677, y: 761}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: BicepL
     spriteName: BicepL
     isGroup: 0
@@ -625,6 +289,16 @@ ScriptedImporter:
     spriteID: 8d4501d9c5053304799aca8496d807b7
     layerID: 462
     mosaicPosition: {x: 1113, y: 816}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: "\u56FE\u5C42 1"
+    spriteName: "\u56FE\u5C42 1"
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 943b92fe96703dd488fcb4e7ee639384
+    layerID: 500
+    mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -636,8 +310,8 @@ ScriptedImporter:
     layerID: 488
     mosaicPosition: {x: 1315, y: 430}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: Blast
     spriteName: Blast
     isGroup: 0
@@ -646,8 +320,8 @@ ScriptedImporter:
     layerID: 459
     mosaicPosition: {x: 4, y: 761}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: BG Reference
     spriteName: 
     isGroup: 0

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using Unity.Services.Authentication;
 using Unity.Services.Leaderboards;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 public class MainMenu : Panel
 {
@@ -81,13 +82,22 @@ public class MainMenu : Panel
         renameButton.interactable = false;
         try
         {
-            await AuthenticationService.Instance.UpdatePlayerNameAsync(input);
-            UpdatePlayerNameUI();
+            string pattern = @"^[^\s]+\d{2}$";
+            if(Regex.IsMatch(input, pattern))
+            {
+                await AuthenticationService.Instance.UpdatePlayerNameAsync(input);
+                UpdatePlayerNameUI();
+            }
+            else
+            {
+                ErrorMenu panel = (ErrorMenu)PanelManager.GetSingleton("error");
+                panel.Open(ErrorMenu.Action.None, "Fail to change the name. The name must be in the format of \"name\" + \"class\" without space. E.g.\"ZhangSan21\".", "OK");
+            }
         }
         catch
         {
             ErrorMenu panel = (ErrorMenu)PanelManager.GetSingleton("error");
-            panel.Open(ErrorMenu.Action.None, "Fail to change the name.", "OK");
+            panel.Open(ErrorMenu.Action.None, "Fail to change the name. The name must be in the format of \"name\" + \"class\" without space. E.g.\"ZhangSan21\".", "OK");
         }
         renameButton.interactable = true;
     }

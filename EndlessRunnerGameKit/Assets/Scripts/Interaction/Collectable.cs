@@ -138,12 +138,12 @@ public class Collectable : MonoBehaviour
         }
         else if (itemType == ItemType.diode1)
         {
-            NewPlayer.Instance.runRightSpeed = 2f;
+            NewPlayer.Instance.runRightSpeed = 3f;
             NewPlayer.Instance.StopEffect(ItemType.diode1, 3f);
         }
         else if (itemType == ItemType.diode2)
         {
-            NewPlayer.Instance.runRightSpeed = 0.5f;
+            NewPlayer.Instance.runRightSpeed = 0.75f;
             NewPlayer.Instance.StopEffect(ItemType.diode2, 3f);
         }
         else if (itemType == ItemType.cup)
@@ -153,7 +153,7 @@ public class Collectable : MonoBehaviour
                 GameManager.Instance.hud.HealthBarHurt();
                 NewPlayer.Instance.health += itemAmount*3;
             }
-            NewPlayer.Instance.runRightSpeed = 1.5f;
+            NewPlayer.Instance.runRightSpeed = 3f;
             NewPlayer.Instance.StopEffect(ItemType.cup, 5f);
         }
         else if (itemType == ItemType.boxing)

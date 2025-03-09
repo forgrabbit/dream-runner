@@ -185,6 +185,27 @@ public class NewPlayer : PhysicsObject
             }
 
             //Jumping. The jump counter allows for double jumping
+            foreach (Touch touch in Input.touches)
+            {
+                if (touch.phase == TouchPhase.Began)
+                {
+                    if (animator.GetBool("grounded") == true && !jumping && jumpCounter == 0)
+                    {
+                        Jump(1f);
+                    }else if(jumpCounter == 1 && jumping && hasDoubleJump)
+                    {
+                        Jump(1f);
+                        jumpCounter += 1;
+                        audioSource.PlayOneShot(doubleJumpSound);
+                    }
+                }
+    
+                if(touch.phase == TouchPhase.Ended && jumping)
+                {
+                    jumpCounter += 1;
+                }
+            }
+
             if (Input.GetButtonDown("Jump"))
             {
                 if (animator.GetBool("grounded") == true && !jumping && jumpCounter == 0)
@@ -202,6 +223,7 @@ public class NewPlayer : PhysicsObject
             {
                 jumpCounter += 1;
             }
+
 
 
             // //Flip the graphic's localScale 
@@ -513,15 +535,15 @@ public class NewPlayer : PhysicsObject
         yield return new WaitForSeconds(time);
         if (itemType == Collectable.ItemType.diode1)
         {
-            runRightSpeed = 1;
+            runRightSpeed = 1.5f;
         }
         else if (itemType == Collectable.ItemType.diode2)
         {
-            runRightSpeed = 1;
+            runRightSpeed = 1.5f;
         }
         else if (itemType == Collectable.ItemType.cup)
         {
-            runRightSpeed = 1;
+            runRightSpeed = 1.5f;
         }
         else if (itemType == Collectable.ItemType.boxing)
         {
@@ -529,7 +551,7 @@ public class NewPlayer : PhysicsObject
         }
         else if (itemType == Collectable.ItemType.FPGA)
         {
-            runRightSpeed = 1;
+            runRightSpeed = 1.5f;
         }
     }
 }
