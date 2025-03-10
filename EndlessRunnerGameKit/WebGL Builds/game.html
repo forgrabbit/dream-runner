@@ -3,6 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="screen-orientation" content="true">
+      	<meta name="full-screen" content="yes">
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+          <!-- 添加特定于iOS的meta标签以禁止触摸时旋转 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+      	<meta name="format-detection" content="telephone=no" />
+      	<meta name="screen-orientation" content="portrait">
+      	<meta name="x5-orientation" content="portrait">
     <title>Unity WebGL Player | Jazza Runs</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
@@ -55,18 +64,13 @@
         updateBannerVisibility();
       }
 
+
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/WebGL Builds.loader.js";
       var config = {
-<<<<<<< Updated upstream
         dataUrl: buildUrl + "/WebGL Builds.data",
         frameworkUrl: buildUrl + "/WebGL Builds.framework.js",
         codeUrl: buildUrl + "/WebGL Builds.wasm",
-=======
-        dataUrl: buildUrl + "/WebGL Builds.data.gz",
-        frameworkUrl: buildUrl + "/WebGL Builds.framework.js.gz",
-        codeUrl: buildUrl + "/WebGL Builds.wasm.gz",
->>>>>>> Stashed changes
         streamingAssetsUrl: "StreamingAssets",
         companyName: "AtmosGames",
         productName: "Jazza Runs",
@@ -94,15 +98,32 @@
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
 
-        canvas.style.width = window.innerWidth + 'px';
-        canvas.style.height = window.innerHeight + 'px';
+        // canvas.style.width = window.innerWidth + 'px';
+        // canvas.style.height = window.innerHeight + 'px';
 
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
+        // unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        // canvas.style.width = "960px";
+        // canvas.style.height = "600px";
+                  function resetCanvasSize() {
+            const windowWidth = window.innerWidth
+            const windowHeight = window.innerHeight
+            const maxWidth = windowHeight * 2
+            const canvasWidth = windowWidth < maxWidth ? windowWidth : maxWidth
+            const canvasHeight = canvasWidth / 2 < windowHeight ? canvasWidth / 2 : windowHeight
+            const canvasElem = document.getElementById('unity-canvas')
+            canvasElem.style.width = canvasWidth + 'px'
+            canvasElem.style.height = canvasHeight + 'px'
+                  }
+          const canvasElem = document.getElementById('unity-canvas')
+          canvasElem.style.position = 'absolute'
+          canvasElem.style.top = '50%'
+          canvasElem.style.left = '50%'
+          canvasElem.style.transform = 'translate(-50%, -50%)'
+          resetCanvasSize()
+          window.addEventListener('resize',resetCanvasSize)
       }
 
       loadingBar.style.display = "block";
