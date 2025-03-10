@@ -75,19 +75,6 @@ public class MainMenu : Panel
     {
         GetInputMenu panel = (GetInputMenu)PanelManager.GetSingleton("input");
         panel.Open(RenamePlayerConfirm, GetInputMenu.Type.String, 20, "Enter a new name:", "Send", "Cancel");
-        // 添加以下代码 
-        if (Application.platform == RuntimePlatform.WebGLPlayer) 
-        { 
-            // 获取面板中的InputField组件 
-            InputField inputField = panel.GetComponentInChildren<InputField>(); 
-            if (inputField != null) 
-            { 
-                // 激活输入框并聚焦 
-                inputField.ActivateInputField(); inputField.Select(); 
-                // 对于移动端网页，需要设置这个属性来显示虚拟键盘 
-                inputField.shouldHideMobileInput = false; 
-            } 
-        }
     }
 
     private async void RenamePlayerConfirm(string input)
